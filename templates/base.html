@@ -1,0 +1,33 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Slippery Company{% endblock %} — Slippery Company</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<header class="site-header">
+    <div class="container header-inner">
+        <a class="logo" href="{% url 'home' %}">🥿 Slippery Company</a>
+        <nav class="nav">
+            <a href="{% url 'home' %}"{% if section == 'home' %} class="active"{% endif %}>Home</a>
+            <a href="{% url 'news' %}"{% if section == 'news' %} class="active"{% endif %}>News</a>
+            <a href="{% url 'management' %}"{% if section == 'management' %} class="active"{% endif %}>Management</a>
+            <a href="{% url 'about' %}"{% if section == 'about' %} class="active"{% endif %}>About</a>
+            <a href="{% url 'contacts' %}"{% if section == 'contacts' %} class="active"{% endif %}>Contacts</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        &copy; 2026 Slippery Company. All rights reserved.
+    </div>
+</footer>
+</body>
+</html>

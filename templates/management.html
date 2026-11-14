@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Management{% endblock %}
+
+{% block content %}
+<h1 class="page-title">Company Management</h1>
+
+<section class="cards">
+    {% for person in managers %}
+    <div class="card person">
+        <div class="avatar">{{ forloop.counter }}</div>
+        <h2>{{ person.name }}</h2>
+        <p class="role">{{ person.role }}</p>
+        <p>{{ person.bio }}</p>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

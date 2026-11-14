@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>Comfort so good, you won't want to move</h1>
+    <p>Slippery Company makes house footwear that turns every step into
+        something soft, warm and safe.</p>
+    <a class="btn" href="{% url 'about' %}">Learn more</a>
+</section>
+
+<section class="cards">
+    <a class="card" href="{% url 'news' %}">
+        <h2>📰 News</h2>
+        <p>Latest events, new collections and company achievements.</p>
+    </a>
+    <a class="card" href="{% url 'management' %}">
+        <h2>👔 Management</h2>
+        <p>Meet the Joes leading Slippery Company forward.</p>
+    </a>
+    <a class="card" href="{% url 'about' %}">
+        <h2>🏢 About</h2>
+        <p>Our story, mission and values.</p>
+    </a>
+    <a class="card" href="{% url 'contacts' %}">
+        <h2>📍 Contacts</h2>
+        <p>Office addresses, phone numbers and email.</p>
+    </a>
+</section>
+{% endblock %}
