@@ -3,24 +3,17 @@
 {% block title %}About{% endblock %}
 
 {% block content %}
+{% include '_subnav.html' %}
+
 <h1 class="page-title">About the Company</h1>
 
 <section class="text-block">
-    <h2>Our story</h2>
     <p>Slippery Company was founded in 2010 by a small team dreaming of the
         perfect house slipper. From a tiny workshop we grew into a company
-        with offices in Kyiv and Odesa.</p>
-
-    <h2>Mission</h2>
-    <p>To make everyday comfort accessible to everyone — from the first
-        step in the morning to the last one in the evening.</p>
-
-    <h2>Values</h2>
-    <ul>
-        <li>Comfort without compromise</li>
-        <li>High-quality, eco-friendly materials</li>
-        <li>Honesty with customers and partners</li>
-        <li>Safety in every step — a sole that doesn't slip!</li>
-    </ul>
+        with offices in Ukraine, France and Austria. Our mission is to make
+        everyday comfort accessible to everyone.</p>
+    <p>Explore more below:</p>
 </section>
+
+{% include '_subcards.html' %}
 {% endblock %}

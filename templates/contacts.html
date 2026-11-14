@@ -3,16 +3,10 @@
 {% block title %}Contacts{% endblock %}
 
 {% block content %}
-<h1 class="page-title">Contacts</h1>
+{% include '_subnav.html' %}
 
-<section class="cards">
-    {% for office in offices %}
-    <div class="card">
-        <h2>📍 {{ office.city }}</h2>
-        <p>{{ office.address }}</p>
-        <p>☎ {{ office.phone }}</p>
-        <p>✉ {{ office.email }}</p>
-    </div>
-    {% endfor %}
-</section>
+<h1 class="page-title">Contacts</h1>
+<p class="intro">Choose a country to see our offices there.</p>
+
+{% include '_subcards.html' %}
 {% endblock %}

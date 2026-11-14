@@ -3,12 +3,14 @@
 {% block title %}News{% endblock %}
 
 {% block content %}
+{% include '_subnav.html' %}
+
 <h1 class="page-title">Company News</h1>
 
 {% for item in news %}
 <article class="news-item">
-    <time>{{ item.date }}</time>
-    <h2>{{ item.title }}</h2>
+    <time>{{ item.date|date:"F j, Y" }} &middot; {{ item.category }}</time>
+    <h2>{{ item.heading }}</h2>
     <p>{{ item.text }}</p>
 </article>
 {% empty %}

@@ -1,25 +1,9 @@
-from django.urls import path
-
-from . import views
+from django.urls import include, path
 
 urlpatterns = [
-    path('',            views.home,        name='home'),
-    path('news/',       views.news,        name='news'),
-    path('management/', views.management,  name='management'),
-    path('about/',      views.about,       name='about'),
-    path('contacts/',   views.contacts,    name='contacts'),
-    path('contact/',    views.contacts,    name='contact-alt'),
-
-    # Catch-all for each section. Order matters: these come AFTER the base
-    # addresses. The <path:_> converter matches any remainder of the path
-    # (including slashes), and omitting the trailing "/" lets addresses like
-    # /news/yellowsubmarine open directly without a redirect.
-    path('news/<path:_>',       views.news,        name='news-catchall'),
-    path('management/<path:_>', views.management,  name='mgmt-catchall'),
-    path('about/<path:_>',      views.about,       name='about-catchall'),
-    path('contacts/<path:_>',   views.contacts,    name='contacts-catchall'),
-    path('contact/<path:_>',    views.contacts,    name='contact-alt-catchall'),
+    # All routes live in the "sections" app.
+    path('', include('sections.urls')),
 ]
 
-# Any other unknown address shows a custom 404 page.
-handler404 = 'company_site.views.page_not_found'
+# Any unknown address (outside the known sections) shows a custom 404 page.
+handler404 = 'sections.views.page_not_found'
