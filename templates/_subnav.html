@@ -1,0 +1,5 @@
+<nav class="subnav">
+    {% for item in subnav %}
+    <a href="{{ item.url }}"{% if item.active %} class="active"{% endif %}>{{ item.title }}</a>
+    {% endfor %}
+</nav>

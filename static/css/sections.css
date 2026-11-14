@@ -1,0 +1,28 @@
+/* Sub-navigation, breadcrumbs and small helpers for subsection pages */
+
+.subnav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+.subnav a {
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: #ece6fb;
+    color: var(--primary-dark);
+    text-decoration: none;
+    font-size: .95rem;
+    transition: background .2s, color .2s;
+}
+.subnav a:hover { background: #d9cff6; }
+.subnav a.active { background: var(--primary); color: #fff; }
+
+.breadcrumb { margin: 0 0 12px; color: var(--muted); font-size: .9rem; }
+.breadcrumb a { color: var(--primary); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+.intro { color: var(--muted); margin-top: -8px; margin-bottom: 24px; }
+
+.meta { font-size: .85rem; color: var(--muted); }
+.card time.meta { display: block; margin-bottom: 4px; }

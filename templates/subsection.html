@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ subsection.title }} - {{ section_title }}{% endblock %}
+
+{% block content %}
+<p class="breadcrumb"><a href="{% url section %}">{{ section_title }}</a> / {{ subsection.title }}</p>
+
+{% include '_subnav.html' %}
+
+<h1 class="page-title">{{ subsection.title }}</h1>
+<p class="intro">{{ subsection.intro }}</p>
+
+<section class="cards">
+    {% for item in subsection.items %}
+    <div class="card">
+        {% if item.date %}<time class="meta">{{ item.date|date:"F j, Y" }}</time>{% endif %}
+        <h2>{{ item.heading }}</h2>
+        {% if item.role %}<p class="role">{{ item.role }}</p>{% endif %}
+        {% if item.text %}<p>{{ item.text }}</p>{% endif %}
+        {% for line in item.lines %}<p>{{ line }}</p>{% endfor %}
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

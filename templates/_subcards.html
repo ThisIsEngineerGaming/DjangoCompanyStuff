@@ -1,0 +1,8 @@
+<section class="cards">
+    {% for card in subsection_cards %}
+    <a class="card" href="{{ card.url }}">
+        <h2>{{ card.title }}</h2>
+        <p>{{ card.intro }}</p>
+    </a>
+    {% endfor %}
+</section>
