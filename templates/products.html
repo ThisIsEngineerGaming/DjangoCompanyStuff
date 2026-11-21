@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+{% include '_subnav.html' %}
+
+<h1 class="page-title">Our Products</h1>
+
+<section class="cards">
+    {% for item in products %}
+    <div class="card product">
+        {% if item.image %}<img src="{% static 'img/'|add:item.image %}" alt="{{ item.heading }}">{% endif %}
+        <h2>{{ item.heading }}</h2>
+        <p class="meta">{{ item.category }}</p>
+        <p>{{ item.text }}</p>
+        <p class="price">{{ item.price }}</p>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

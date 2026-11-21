@@ -114,6 +114,22 @@ SECTIONS = {
                     },
                 ],
             },
+            'departments': {
+                'title': 'Department Heads',
+                'intro': 'The Joes who keep every team moving.',
+                'items': [
+                    {
+                        'heading': 'Joe 6',
+                        'role': 'Head of Design',
+                        'text': 'Draws every new collection, from cosy classics to bold limited editions.',
+                    },
+                    {
+                        'heading': 'Joe 7',
+                        'role': 'Head of Customer Care',
+                        'text': 'Answers questions, fixes problems and collects your feedback.',
+                    },
+                ],
+            },
         },
     },
 

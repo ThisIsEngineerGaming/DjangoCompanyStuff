@@ -19,11 +19,12 @@ class SectionView(TemplateView):
     * /<section>/<anything>  -> unknown slug or deeper path: the overview
                                 is shown (the "catch-all" behaviour).
     """
-    section_key = None       # key in SECTIONS, also the URL name of the section
+    section_key = None       # key in sections_data, also the URL name of the section
     index_template = None    # template of the section overview
+    sections_data = SECTIONS  # other apps may point this to their own data
 
     def get(self, request, *args, **kwargs):
-        subsections = SECTIONS[self.section_key]['subsections']
+        subsections = self.sections_data[self.section_key]['subsections']
         self.subsection = subsections.get(kwargs.get('slug'))
         return super().get(request)
 
@@ -38,7 +39,7 @@ class SectionView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        data = SECTIONS[self.section_key]
+        data = self.sections_data[self.section_key]
 
         subnav = [{
             'title': 'Overview',
@@ -69,7 +70,7 @@ class SectionView(TemplateView):
     def all_items(self):
         """Items of all subsections, each tagged with its subsection title."""
         items = []
-        for sub in SECTIONS[self.section_key]['subsections'].values():
+        for sub in self.sections_data[self.section_key]['subsections'].values():
             for item in sub['items']:
                 items.append({**item, 'category': sub['title']})
         return items

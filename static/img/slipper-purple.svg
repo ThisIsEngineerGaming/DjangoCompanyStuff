@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" role="img" aria-label="Slipper">
+  <ellipse cx="100" cy="78" rx="85" ry="14" fill="#4f34a8"/>
+  <path d="M20 74 C20 40 60 28 100 30 C150 32 182 50 182 74 Z" fill="#6c4bd6"/>
+  <path d="M60 74 C62 48 110 42 140 74 Z" fill="#ece6fb"/>
+</svg>

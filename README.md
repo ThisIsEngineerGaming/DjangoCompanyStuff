@@ -17,7 +17,9 @@ Then open http://127.0.0.1:8000/
   - `data.py`  - sections, subsections and their content
   - `views.py` - class-based views (`SectionView` + one subclass per section)
   - `urls.py`  - routes for sections, subsections and catch-all
-- `templates/`, `static/` - HTML templates and CSS.
+- `products/` - the second app: product catalog (`data.py`, `views.py`, `urls.py`);
+  it reuses `SectionView` from `sections` with its own data.
+- `templates/`, `static/` - HTML templates, CSS and images.
 
 ## Routes
 
@@ -26,8 +28,10 @@ Then open http://127.0.0.1:8000/
 | `/`                                       | Home                         |
 | `/news/`                                  | News (all)                   |
 | `/news/company`, `/news/products`, `/news/events` | News subsections     |
+| `/products/`                              | Products (all)               |
+| `/products/women`, `/products/men`, `/products/kids`, `/products/accessories` | Product subsections |
 | `/management/`                            | Management (all)             |
-| `/management/board`, `/management/executives` | Management subsections   |
+| `/management/board`, `/management/executives`, `/management/departments` | Management subsections |
 | `/about/`                                 | About                        |
 | `/about/history`, `/about/mission`, `/about/values` | About subsections  |
 | `/contacts/`, `/contact/`                 | Contacts                     |

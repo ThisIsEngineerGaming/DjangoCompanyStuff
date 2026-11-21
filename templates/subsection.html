@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}{{ subsection.title }} - {{ section_title }}{% endblock %}
 
@@ -12,12 +13,14 @@
 
 <section class="cards">
     {% for item in subsection.items %}
-    <div class="card">
+    <div class="card{% if item.image %} product{% endif %}">
+        {% if item.image %}<img src="{% static 'img/'|add:item.image %}" alt="{{ item.heading }}">{% endif %}
         {% if item.date %}<time class="meta">{{ item.date|date:"F j, Y" }}</time>{% endif %}
         <h2>{{ item.heading }}</h2>
         {% if item.role %}<p class="role">{{ item.role }}</p>{% endif %}
         {% if item.text %}<p>{{ item.text }}</p>{% endif %}
         {% for line in item.lines %}<p>{{ line }}</p>{% endfor %}
+        {% if item.price %}<p class="price">{{ item.price }}</p>{% endif %}
     </div>
     {% endfor %}
 </section>

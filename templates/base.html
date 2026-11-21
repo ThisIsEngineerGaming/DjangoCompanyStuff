@@ -13,6 +13,7 @@
         <a class="logo" href="{% url 'home' %}">🥿 Slippery Company</a>
         <nav class="nav">
             <a href="{% url 'home' %}"{% if section == 'home' %} class="active"{% endif %}>Home</a>
+            <a href="{% url 'products' %}"{% if section == 'products' %} class="active"{% endif %}>Products</a>
             <a href="{% url 'news' %}"{% if section == 'news' %} class="active"{% endif %}>News</a>
             <a href="{% url 'management' %}"{% if section == 'management' %} class="active"{% endif %}>Management</a>
             <a href="{% url 'about' %}"{% if section == 'about' %} class="active"{% endif %}>About</a>
