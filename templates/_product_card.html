@@ -1,0 +1,23 @@
+{% load static shop_extras %}
+<div class="card product{% if not product.in_stock %} out{% endif %}">
+    {% if product.image %}<img src="{% static 'img/'|add:product.image %}" alt="{{ product.name }}">{% endif %}
+    <h2>{{ product.name }}</h2>
+    <p>{{ product.description|truncatechars:70 }}</p>
+    {% if product.tags %}<p class="meta">{{ product.tags|join:" · "|title }}</p>{% endif %}
+
+    <p class="price">
+        {% if product.on_sale %}
+            <span class="old-price">{{ product.old_price|money }}</span>
+            {{ product.price|money }}
+            <span class="badge">-{{ product.discount_percent }}%</span>
+        {% else %}
+            {{ product.price|money }}
+        {% endif %}
+    </p>
+
+    {% if product.in_stock %}
+        <p class="stock yes">In stock</p>
+    {% else %}
+        <p class="stock no">Out of stock</p>
+    {% endif %}
+</div>

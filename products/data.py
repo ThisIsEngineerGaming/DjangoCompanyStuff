@@ -1,10 +1,10 @@
 """
 Content of the "Products" section (second app of the project).
 
-Same structure as sections/data.py. Extra item fields:
-    price - text shown on the card
-    image - file name inside static/img/
+Same structure as sections/data.py, but every subsection's `items`
+is a list of `Product` objects (see classes.py).
 """
+from .classes import Product
 
 SECTIONS = {
     'products': {
@@ -14,40 +14,43 @@ SECTIONS = {
                 'title': 'Women',
                 'intro': 'Soft, warm and stylish slippers for her.',
                 'items': [
-                    {'heading': 'Cloud Walker', 'price': '$29', 'image': 'slipper-purple.svg',
-                     'text': 'Our bestseller: memory-foam insole and a non-slip sole.'},
-                    {'heading': 'Winter Rink', 'price': '$35', 'image': 'slipper-orange.svg',
-                     'text': 'Fleece-lined and extra warm for cold tiled floors.'},
+                    Product('Cloud Walker', 29, 'Our bestseller: memory-foam insole and a non-slip sole.',
+                            'slipper-purple.svg', tags=['bestseller', 'memory foam']),
+                    Product('Winter Rink', 28, 'Fleece-lined and extra warm for cold tiled floors.',
+                            'slipper-orange.svg', old_price=35, tags=['warm', 'winter']),
+                    Product('Rose Petal', 31, 'Light satin slippers for summer evenings.',
+                            'slipper-purple.svg', in_stock=False, tags=['light']),
                 ],
             },
             'men': {
                 'title': 'Men',
                 'intro': 'Comfort-first house footwear for him.',
                 'items': [
-                    {'heading': 'Sofa Captain', 'price': '$32', 'image': 'slipper-dark.svg',
-                     'text': 'A roomy fit with a firm sole for walks to the kitchen.'},
-                    {'heading': 'Morning Coffee', 'price': '$27', 'image': 'slipper-purple.svg',
-                     'text': 'Light, breathable and easy to slip on.'},
+                    Product('Sofa Captain', 32, 'A roomy fit with a firm sole for walks to the kitchen.',
+                            'slipper-dark.svg', tags=['roomy']),
+                    Product('Morning Coffee', 27, 'Light, breathable and easy to slip on.',
+                            'slipper-purple.svg', tags=['light', 'breathable']),
+                    Product('Night Owl', 36, 'Quiet soles that will not wake up the neighbours.',
+                            'slipper-dark.svg', old_price=45, tags=['quiet']),
                 ],
             },
             'kids': {
                 'title': 'Kids',
                 'intro': 'Little feet, big comfort.',
                 'items': [
-                    {'heading': 'Tiny Steps', 'price': '$19', 'image': 'slipper-orange.svg',
-                     'text': 'Bright colours and a grippy sole for young explorers.'},
-                    {'heading': 'Puddle Jumper', 'price': '$22', 'image': 'slipper-dark.svg',
-                     'text': 'Washable and quick drying.'},
+                    Product('Tiny Steps', 19, 'Bright colours and a grippy sole for young explorers.',
+                            'slipper-orange.svg', tags=['grippy']),
+                    Product('Puddle Jumper', 22, 'Washable and quick drying.',
+                            'slipper-dark.svg', tags=['washable']),
                 ],
             },
             'accessories': {
                 'title': 'Accessories',
                 'intro': 'Everything to keep your slippers (and feet) happy.',
                 'items': [
-                    {'heading': 'Cosy Socks', 'price': '$9',
-                     'text': 'Pair them with any slipper for extra warmth.'},
-                    {'heading': 'Slipper Care Kit', 'price': '$12',
-                     'text': 'Brush and gentle cleaner to keep soles and fabric fresh.'},
+                    Product('Cosy Socks', 9, 'Pair them with any slipper for extra warmth.', tags=['warm']),
+                    Product('Slipper Care Kit', 12, 'Brush and gentle cleaner to keep soles and fabric fresh.',
+                            in_stock=False, tags=['care']),
                 ],
             },
         },

@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{% block meta_description %}Slippery Company - comfortable house footwear.{% endblock %}">
     <title>{% block title %}Slippery Company{% endblock %} - Slippery Company</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/sections.css' %}">
@@ -23,12 +24,13 @@
 </header>
 
 <main class="container">
+    {% block banner %}{% endblock %}
     {% block content %}{% endblock %}
 </main>
 
 <footer class="site-footer">
     <div class="container">
-        &copy; 2026 Slippery Company. All rights reserved.
+        {% block footer_text %}&copy; 2026 Slippery Company. All rights reserved.{% endblock %}
     </div>
 </footer>
 </body>

@@ -17,8 +17,17 @@ Then open http://127.0.0.1:8000/
   - `data.py`  - sections, subsections and their content
   - `views.py` - class-based views (`SectionView` + one subclass per section)
   - `urls.py`  - routes for sections, subsections and catch-all
-- `products/` - the second app: product catalog (`data.py`, `views.py`, `urls.py`);
-  it reuses `SectionView` from `sections` with its own data.
+- `products/` - the second app: product catalog
+  - `classes.py` - user-defined class `Product` and `summarize()`
+  - `data.py`, `views.py`, `urls.py` - data, views (reuse `SectionView`), routes
+  - `templatetags/shop_extras.py` - custom filter `money`
+  - the views pass nested dicts with lists of `Product` objects to the templates
+    (`products.html`, `product_list.html`, `_product_card.html`), which use
+    `with`, `if/else`, `for`, filters `length`, `pluralize`, `join`, `title`,
+    `truncatechars`, `add` and the custom `money`
+- Template inheritance: `base.html` -> `products_base.html` -> `products.html`;
+  child templates extend blocks `meta_description` and `footer_text` with
+  `{{ block.super }}` and fill the `banner` block.
 - `templates/`, `static/` - HTML templates, CSS and images.
 
 ## Routes

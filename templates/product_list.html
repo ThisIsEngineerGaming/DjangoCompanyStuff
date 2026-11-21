@@ -1,0 +1,31 @@
+{% extends 'products_base.html' %}
+{% load shop_extras %}
+
+{% block title %}{{ subsection.title }} - {{ section_title }}{% endblock %}
+
+{% block meta_description %}{{ block.super }} {{ subsection.intro }}{% endblock %}
+
+{% block content %}
+<p class="breadcrumb"><a href="{% url section %}">{{ section_title }}</a> / {{ subsection.title }}</p>
+
+{% include '_subnav.html' %}
+
+<h1 class="page-title">{{ subsection.title }}</h1>
+<p class="intro">{{ subsection.intro }}</p>
+
+{% with st=stats %}
+<p class="meta">
+    {{ st.total }} product{{ st.total|pluralize }}, average price {{ st.average|money }}
+    {% if st.on_sale %}, {{ st.on_sale }} on sale{% endif %}
+    {% if st.out_of_stock %}, {{ st.out_of_stock }} out of stock{% endif %}
+</p>
+{% endwith %}
+
+<section class="cards">
+    {% for product in subsection.items %}
+        {% include '_product_card.html' with product=product %}
+    {% empty %}
+        <p>No products yet.</p>
+    {% endfor %}
+</section>
+{% endblock %}

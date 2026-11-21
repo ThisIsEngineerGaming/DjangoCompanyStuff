@@ -1,22 +1,44 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'products_base.html' %}
+{% load shop_extras %}
 
 {% block title %}Products{% endblock %}
+
+{% block banner %}
+{% with s=catalog.summary %}
+    {% if s.on_sale %}
+    <div class="banner">🔥 {{ s.on_sale }} product{{ s.on_sale|pluralize }} on sale right now!</div>
+    {% else %}
+    <div class="banner banner-calm">New discounts are coming soon.</div>
+    {% endif %}
+{% endwith %}
+{% endblock %}
 
 {% block content %}
 {% include '_subnav.html' %}
 
 <h1 class="page-title">Our Products</h1>
 
+{% with s=catalog.summary %}
+<p class="intro">
+    {{ s.total }} product{{ s.total|pluralize }} in {{ catalog.categories|length }} categories,
+    {{ s.in_stock }} in stock. Cheapest: {{ s.cheapest.name }} ({{ s.cheapest.price|money }}),
+    most expensive: {{ s.priciest.name }} ({{ s.priciest.price|money }}),
+    average price: {{ s.average|money }}.
+</p>
+{% endwith %}
+
+{% for category in catalog.categories %}
+<h2 class="category-title">
+    <a href="{{ category.url }}">{{ category.title }}</a>
+    <span class="meta">({{ category.products|length }})</span>
+</h2>
+<p class="intro">{{ category.intro }}</p>
 <section class="cards">
-    {% for item in products %}
-    <div class="card product">
-        {% if item.image %}<img src="{% static 'img/'|add:item.image %}" alt="{{ item.heading }}">{% endif %}
-        <h2>{{ item.heading }}</h2>
-        <p class="meta">{{ item.category }}</p>
-        <p>{{ item.text }}</p>
-        <p class="price">{{ item.price }}</p>
-    </div>
+    {% for product in category.products %}
+        {% include '_product_card.html' with product=product %}
+    {% empty %}
+        <p>No products yet.</p>
     {% endfor %}
 </section>
+{% endfor %}
 {% endblock %}

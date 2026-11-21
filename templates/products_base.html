@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{# Shared parent for all pages of the Products app: takes data from base.html via block.super #}
+
+{% block meta_description %}{{ block.super }} Browse our catalog of slippers and accessories.{% endblock %}
+
+{% block footer_text %}{{ block.super }} Prices include VAT.{% endblock %}
